@@ -17,6 +17,7 @@ function init() {
 
     // Start your code here
     // You may move this JS to another file if you wish
+    // Part 1
     document.getElementById('console_log').addEventListener('click', () => {
         console.log('Hello!');
     })
@@ -76,4 +77,41 @@ function init() {
         const fourth = () => { console.trace(); };
         first();
     })
+
+    //Part 2
+    try {
+        console.log(document.getElementById('nope').innerHTML);
+
+    } catch (err) {
+        console.error(err);
+    }
+
+    //Part 3
+    class ValidationError extends Error {
+        constructor(message) {
+            super(message);
+            this.name = "ValidationError"
+        }
+    }
+
+    function validateAge(age) {
+        if (age < 18) {
+            throw new ValidationError("Too Young!");
+        } else if (age > 65) {
+            throw new ValidationError("Too Old!");
+        } else {
+            return age;
+        }
+    }
+
+    try {
+        let ages = [20, 16, 23, 67];
+        ages.forEach((age) => {
+            console.log(validateAge(age));
+        })
+    } catch (err) {
+        if (err instanceof ValidationError) {
+            console.error("Invalid age: " + err.message);
+        }
+    }
 }
