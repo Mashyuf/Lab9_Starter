@@ -114,4 +114,14 @@ function init() {
             console.error("Invalid age: " + err.message);
         }
     }
+
+    //Part 5
+    document.getElementById('global_error').addEventListener('click', () => {
+        try {
+            errorfunction();
+        } catch (err) {
+            console.error(err);
+        }
+    })
+        
 }
